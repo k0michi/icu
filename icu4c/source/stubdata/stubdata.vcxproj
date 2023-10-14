@@ -4,7 +4,7 @@
     <ProjectGuid>{203EC78A-0531-43F0-A636-285439BDE025}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -36,7 +36,7 @@
     </Midl>
     <ClCompile>
       <AdditionalIncludeDirectories>..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>STUBDATA_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>STUBDATA_BUILD;U_STATIC_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>Default</CompileAs>
@@ -60,6 +60,12 @@
       <ProgramDatabaseFile>.\..\..\$(IcuLibOutputDir)\icudt.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\$(IcuLibOutputDir)\icudt.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <NoEntryPoint>true</NoEntryPoint>
+      <SetChecksum>true</SetChecksum>
+      <TurnOffAssemblyGeneration>true</TurnOffAssemblyGeneration>
+      <OutputFile>..\..\$(IcuLibOutputDir)\icudt.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Debug' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">

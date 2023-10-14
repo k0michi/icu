@@ -4,7 +4,7 @@
     <ProjectGuid>{ECA6B435-B4FA-4F9F-BF95-F451D078FC47}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -33,7 +33,7 @@
     </Midl>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\include;..\..\common;..\toolutil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>T_CTEST_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>T_CTEST_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>Default</CompileAs>
@@ -45,6 +45,9 @@
     <Link>
       <AdditionalLibraryDirectories>..\..\..\$(IcuLibOutputDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\$(IcuLibOutputDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Debug' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
@@ -58,6 +61,10 @@
       <ImportLibrary>.\..\..\..\$(IcuLibOutputDir)\icutestd.lib</ImportLibrary>
       <AdditionalDependencies>icuucd.lib;icutud.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <OutputFile>.\..\..\..\$(IcuLibOutputDir)\icutestd.lib</OutputFile>
+      <AdditionalDependencies>icuucd.lib;icutud.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Release' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -71,6 +78,10 @@
       <ImportLibrary>.\..\..\..\$(IcuLibOutputDir)\icutest.lib</ImportLibrary>
       <AdditionalDependencies>icuuc.lib;icutu.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <OutputFile>.\..\..\..\$(IcuLibOutputDir)\icutest.lib</OutputFile>
+      <AdditionalDependencies>icuuc.lib;icutu.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ctest.c" />

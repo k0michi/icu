@@ -4,7 +4,7 @@
     <ProjectGuid>{0178B127-6269-407D-B112-93877BB62776}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -34,7 +34,7 @@
       <TypeLibraryName>$(OutDir)\icuin.tlb</TypeLibraryName>
     </Midl>
     <ClCompile>
-      <PreprocessorDefinitions>U_ATTRIBUTE_DEPRECATED=;U_I18N_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>U_ATTRIBUTE_DEPRECATED=;U_I18N_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>..\..\include;..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -51,6 +51,9 @@
     <Link>
       <AdditionalLibraryDirectories>.\..\..\$(IcuLibOutputDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>.\..\..\$(IcuLibOutputDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Debug' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
@@ -64,6 +67,10 @@
       <ProgramDatabaseFile>.\..\..\$(IcuLibOutputDir)\icuind.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\$(IcuLibOutputDir)\icuind.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <AdditionalDependencies>icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\$(IcuLibOutputDir)\icuind.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Release' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -77,6 +84,10 @@
       <ProgramDatabaseFile>.\..\..\$(IcuLibOutputDir)\icuin.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\$(IcuLibOutputDir)\icuin.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <AdditionalDependencies>icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\$(IcuLibOutputDir)\icuin.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="erarules.cpp" />

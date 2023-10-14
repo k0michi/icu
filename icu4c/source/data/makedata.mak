@@ -20,7 +20,8 @@ U_ICUDATA_NAME=icudt73
 !ENDIF
 U_ICUDATA_ENDIAN_SUFFIX=l
 UNICODE_VERSION=15.0
-ICU_LIB_TARGET=$(DLL_OUTPUT)\$(U_ICUDATA_NAME).dll
+# ICU_LIB_TARGET=$(DLL_OUTPUT)\$(U_ICUDATA_NAME).dll
+ICU_LIB_TARGET=$(DLL_OUTPUT)\$(U_ICUDATA_NAME).lib
 
 #  ICUMAKE
 #     Must be provided by whoever runs this makefile.
@@ -105,16 +106,29 @@ ICUDATA=$(ICUP)\source\data
 #      This is the same place that all of the other ICU DLLs go (the code-containing DLLs)
 #      The lib file for the data DLL goes in $(DLL_OUTPUT)/../lib/
 #
+# !IF "$(CFG)" == "ARM\Release" || "$(CFG)" == "ARM\Debug"
+# DLL_OUTPUT=$(ICUP)\binARM$(UWP)
+# !ELSE IF "$(CFG)" == "ARM64\Release" || "$(CFG)" == "ARM64\Debug"
+# DLL_OUTPUT=$(ICUP)\binARM64$(UWP)
+# !ELSE IF "$(CFG)" == "x64\Release" || "$(CFG)" == "x64\Debug"
+# DLL_OUTPUT=$(ICUP)\bin64$(UWP)
+# !ELSE IF "$(UWP)" == "UWP"
+# DLL_OUTPUT=$(ICUP)\bin32$(UWP)
+# !ELSE
+# DLL_OUTPUT=$(ICUP)\bin$(UWP)
+# !ENDIF
+# !MESSAGE ICU data DLL_OUTPUT path is $(DLL_OUTPUT)
+
 !IF "$(CFG)" == "ARM\Release" || "$(CFG)" == "ARM\Debug"
-DLL_OUTPUT=$(ICUP)\binARM$(UWP)
+DLL_OUTPUT=$(ICUP)\libARM$(UWP)
 !ELSE IF "$(CFG)" == "ARM64\Release" || "$(CFG)" == "ARM64\Debug"
-DLL_OUTPUT=$(ICUP)\binARM64$(UWP)
+DLL_OUTPUT=$(ICUP)\libARM64$(UWP)
 !ELSE IF "$(CFG)" == "x64\Release" || "$(CFG)" == "x64\Debug"
-DLL_OUTPUT=$(ICUP)\bin64$(UWP)
+DLL_OUTPUT=$(ICUP)\lib64$(UWP)
 !ELSE IF "$(UWP)" == "UWP"
-DLL_OUTPUT=$(ICUP)\bin32$(UWP)
+DLL_OUTPUT=$(ICUP)\lib32$(UWP)
 !ELSE
-DLL_OUTPUT=$(ICUP)\bin$(UWP)
+DLL_OUTPUT=$(ICUP)\lib$(UWP)
 !ENDIF
 !MESSAGE ICU data DLL_OUTPUT path is $(DLL_OUTPUT)
 
@@ -431,8 +445,10 @@ icu4j-data-install :
 	cd "$(ICUBLD_PKG)"
 	"$(ICUPBIN)\icupkg" -x * --list "$(ICUDATA_SOURCE_ARCHIVE)" > "$(ICUTMP)\icudata.lst"
 	"$(ICUPBIN)\pkgdata" $(COMMON_ICUDATA_ARGUMENTS) "$(ICUTMP)\icudata.lst"
-	copy "$(U_ICUDATA_NAME).dll" "$(DLL_OUTPUT)"
-	-@erase "$(U_ICUDATA_NAME).dll"
+#	copy "$(U_ICUDATA_NAME).dll" "$(DLL_OUTPUT)"
+#	-@erase "$(U_ICUDATA_NAME).dll"
+	copy "$(U_ICUDATA_NAME).lib" "$(DLL_OUTPUT)\icudt.lib"
+	-@erase "$(U_ICUDATA_NAME).lib"
 	copy "$(ICUTMP)\$(ICUPKG).dat" "$(ICUOUT)\$(U_ICUDATA_NAME)$(U_ICUDATA_ENDIAN_SUFFIX).dat"
 	-@erase "$(ICUTMP)\$(ICUPKG).dat"
 !ELSE
@@ -442,8 +458,10 @@ icu4j-data-install :
 	"$(ICUPBIN)\pkgdata" $(COMMON_ICUDATA_ARGUMENTS) $(ICUTMP)\icudata.lst
 	-@erase "$(ICU_LIB_TARGET)"
 	@if not exist "$(DLL_OUTPUT)" mkdir "$(DLL_OUTPUT)"
-	copy "$(U_ICUDATA_NAME).dll" "$(ICU_LIB_TARGET)"
-	-@erase "$(U_ICUDATA_NAME).dll"
+#	copy "$(U_ICUDATA_NAME).dll" "$(ICU_LIB_TARGET)"
+#	-@erase "$(U_ICUDATA_NAME).dll"
+	copy "$(U_ICUDATA_NAME).lib" "$(DLL_OUTPUT)\icudt.lib"
+	-@erase "$(U_ICUDATA_NAME).lib"
 	copy "$(ICUTMP)\$(ICUPKG).dat" "$(ICUOUT)\$(U_ICUDATA_NAME)$(U_ICUDATA_ENDIAN_SUFFIX).dat"
 	-@erase "$(ICUTMP)\$(ICUPKG).dat"
 !ENDIF
@@ -454,8 +472,10 @@ icu4j-data-install :
 	"$(ICUPBIN)\pkgdata" $(COMMON_ICUDATA_ARGUMENTS) $(ICUTMP)\icudata.lst
 	-@erase "$(ICU_LIB_TARGET)"
 	@if not exist "$(DLL_OUTPUT)" mkdir "$(DLL_OUTPUT)"
-	copy "$(U_ICUDATA_NAME).dll" "$(ICU_LIB_TARGET)"
-	-@erase "$(U_ICUDATA_NAME).dll"
+#	copy "$(U_ICUDATA_NAME).dll" "$(ICU_LIB_TARGET)"
+#	-@erase "$(U_ICUDATA_NAME).dll"
+	copy "$(U_ICUDATA_NAME).lib" "$(DLL_OUTPUT)\icudt.lib"
+	-@erase "$(U_ICUDATA_NAME).lib"
 	copy "$(ICUTMP)\$(ICUPKG).dat" "$(ICUOUT)\$(U_ICUDATA_NAME)$(U_ICUDATA_ENDIAN_SUFFIX).dat"
 	-@erase "$(ICUTMP)\$(ICUPKG).dat"
 	@echo "timestamp" > $(ARM_CROSSBUILD_TS)

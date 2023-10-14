@@ -4,7 +4,7 @@
     <ProjectGuid>{6B231032-3CB5-4EED-9210-810D666A23A0}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -30,7 +30,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
        <AdditionalIncludeDirectories>..\..\..\include;..\..\common;..\..\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>U_TOOLUTIL_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>U_TOOLUTIL_IMPLEMENTATION;U_STATIC_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>Default</CompileAs>
@@ -46,6 +46,9 @@
     <Link>
       <AdditionalDependencies>icuucd.lib;icuind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>icuucd.lib;icuind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Release' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -56,6 +59,9 @@
     <Link>
       <AdditionalDependencies>icuuc.lib;icuin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>icuuc.lib;icuin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Win32' project configurations -->
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
@@ -68,6 +74,9 @@
     <Link>
       <AdditionalLibraryDirectories>..\..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -80,6 +89,11 @@
       </DataExecutionPrevention>
       <ImportLibrary>..\..\..\lib\icutu.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\lib\icutu.lib</OutputFile>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -92,6 +106,11 @@
       </DataExecutionPrevention>
       <ImportLibrary>..\..\..\lib\icutud.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\lib\icutud.lib</OutputFile>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Lib>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'x64' project configurations -->
   <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
@@ -104,6 +123,9 @@
     <Link>
       <AdditionalLibraryDirectories>..\..\..\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -117,6 +139,9 @@
       <ProgramDatabaseFile>.\..\..\..\lib64\icutu.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\lib64\icutu.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\lib64\icutu.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -127,6 +152,9 @@
       <ProgramDatabaseFile>.\..\..\..\lib64\icutud.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\lib64\icutud.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\lib64\icutud.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='ARM'">
     <ClCompile>
@@ -138,6 +166,9 @@
     <Link>
       <AdditionalLibraryDirectories>.\..\..\..\libARM;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>.\..\..\..\libARM;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <Midl>
@@ -148,6 +179,9 @@
       <ProgramDatabaseFile>.\..\..\..\libARM\icutu.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\libARM\icutu.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\libARM\icutu.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Midl>
@@ -161,6 +195,9 @@
       <ProgramDatabaseFile>.\..\..\..\libARM\icutud.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\libARM\icutud.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\libARM\icutud.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='ARM64'">
     <ClCompile>
@@ -172,6 +209,9 @@
     <Link>
       <AdditionalLibraryDirectories>.\..\..\..\libARM64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>.\..\..\..\libARM64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <Midl>
@@ -182,6 +222,9 @@
       <ProgramDatabaseFile>.\..\..\..\libARM64\icutu.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\libARM64\icutu.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\libARM64\icutu.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <Midl>
@@ -195,6 +238,9 @@
       <ProgramDatabaseFile>.\..\..\..\libARM64\icutud.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\libARM64\icutud.lib</ImportLibrary>
     </Link>
+    <Lib>
+      <OutputFile>..\..\..\libARM64\icutud.lib</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="collationinfo.cpp">

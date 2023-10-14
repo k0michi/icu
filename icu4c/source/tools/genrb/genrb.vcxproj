@@ -40,6 +40,7 @@
       <AssemblerListingLocation>$(OutDir)/</AssemblerListingLocation>
       <ObjectFileName>$(OutDir)/</ObjectFileName>
       <ProgramDataBaseFileName>$(OutDir)/genrb.pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>U_STATIC_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

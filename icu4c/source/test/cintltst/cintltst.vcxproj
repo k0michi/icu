@@ -36,7 +36,7 @@
       <CompileAs>Default</CompileAs>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <AdditionalIncludeDirectories>..\..\..\include;..\..\tools\ctestfw;..\..\common;..\..\i18n;..\..\tools\toolutil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>U_ATTRIBUTE_DEPRECATED=;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>U_ATTRIBUTE_DEPRECATED=;U_STATIC_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderOutputFile>$(OutDir)\cintltst.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(OutDir)/</AssemblerListingLocation>
       <ObjectFileName>$(OutDir)/</ObjectFileName>

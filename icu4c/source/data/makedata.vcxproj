@@ -23,7 +23,7 @@
     <OutDir Condition="'$(Platform)'=='Win32'">.\data\tmp\x86\</OutDir>
     <MakeCFG Condition="'$(Platform)'=='Win32'">x86\$(Configuration)</MakeCFG>
     <!-- NMake -->
-    <NMakeBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) DEBUG=$(DebugBuild)</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) DEBUG=$(DebugBuild) ICU_PACKAGE_MODE="-m static"</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) clean all</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) clean</NMakeCleanCommandLine>
     <NMakeOutput/>

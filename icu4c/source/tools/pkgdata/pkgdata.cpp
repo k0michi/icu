@@ -1833,7 +1833,7 @@ static int32_t pkg_createWindowsDLL(const char mode, const char *gencFilePath, U
         snprintf(staticLibFilePath, sizeof(staticLibFilePath), "%s%s%s%s%s",
                 o->targetDir,
                 PKGDATA_FILE_SEP_STRING,
-                (strstr(o->libName, "icudt") ? "s" : ""),
+                "",
                 o->libName,
                 LIB_EXT);
 #endif
