@@ -1,3 +1,23 @@
+# ICU4C with MSVC++ static library support
+
+This ICU4C fork enables building static library (.lib) using Microsoft Visual C++.
+
+Currently this fork is based on ICU 73.2.
+
+## Build instruction
+
+The build procedure is as same as the original ICU. You can build this via Visual Studio or MSBuild command.
+
+For instance, using MSBuild:
+
+```
+msbuild source\allinone\allinone.sln /p:Configuration=Release /p:Platform=x64 /p:SkipUWP=true
+```
+
+Note that you need to specify `/p:SkipUWP=true` as UWP is not currently supported.
+
+---
+
 #  International Components for Unicode
 
 This is the repository for the [International Components for Unicode](https://icu.unicode.org/).
